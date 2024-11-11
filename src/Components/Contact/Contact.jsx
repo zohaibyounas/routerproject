@@ -1,11 +1,15 @@
-import React from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
+import React from "react";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
 
 const validationSchema = Yup.object().shape({
-  name: Yup.string().required('Full Name is required'),
-  email: Yup.string().email('Invalid email address').required('Email is required'),
-  tel: Yup.string().matches(/^\+?[1-9]\d{1,14}$/, 'Invalid phone number').required('Telephone Number is required'),
+  name: Yup.string().required("Full Name is required"),
+  email: Yup.string()
+    .email("Invalid email address")
+    .required("Email is required"),
+  tel: Yup.string()
+    .matches(/^\+?[1-9]\d{1,14}$/, "Invalid phone number")
+    .required("Telephone Number is required"),
 });
 
 export default function Contact() {
@@ -13,8 +17,8 @@ export default function Contact() {
   const handleSubmit = (values, { setSubmitting, resetForm }) => {
     // Simulate an API call
     setTimeout(() => {
-      console.log('Form data', values);
-      alert('Form submitted successfully!');
+      console.log("Form data", values);
+      alert("Form submitted successfully!");
       setSubmitting(false);
       resetForm();
     }, 1000);
@@ -107,7 +111,7 @@ export default function Contact() {
             </div>
 
             <Formik
-              initialValues={{ name: '', email: '', tel: '' }}
+              initialValues={{ name: "", email: "", tel: "" }}
               validationSchema={validationSchema}
               onSubmit={handleSubmit}
             >
@@ -124,8 +128,8 @@ export default function Contact() {
                       placeholder="Full Name"
                       className={`w-100 mt-2 py-3 px-3 rounded-lg bg-white border ${
                         touched.name && errors.name
-                          ? 'border-red-500'
-                          : 'border-gray-400'
+                          ? "border-red-500"
+                          : "border-gray-400"
                       } text-gray-800 font-semibold focus:border-orange-500 focus:outline-none`}
                     />
                     <ErrorMessage
@@ -146,8 +150,8 @@ export default function Contact() {
                       placeholder="Email"
                       className={`w-100 mt-2 py-3 px-3 rounded-lg bg-white border ${
                         touched.email && errors.email
-                          ? 'border-red-500'
-                          : 'border-gray-400'
+                          ? "border-red-500"
+                          : "border-gray-400"
                       } text-gray-800 font-semibold focus:border-orange-500 focus:outline-none`}
                     />
                     <ErrorMessage
@@ -168,8 +172,8 @@ export default function Contact() {
                       placeholder="Telephone Number"
                       className={`w-100 mt-2 py-3 px-3 rounded-lg bg-white border ${
                         touched.tel && errors.tel
-                          ? 'border-red-500'
-                          : 'border-gray-400'
+                          ? "border-red-500"
+                          : "border-gray-400"
                       } text-gray-800 font-semibold focus:border-orange-500 focus:outline-none`}
                     />
                     <ErrorMessage
@@ -184,7 +188,7 @@ export default function Contact() {
                     className="md:w-32 bg-orange-700 hover:bg-blue-dark text-white font-bold py-3 px-6 rounded-lg mt-3 hover:bg-orange-600 transition ease-in-out duration-300"
                     disabled={isSubmitting}
                   >
-                    {isSubmitting ? 'Submitting...' : 'Submit'}
+                    {isSubmitting ? "Submitting..." : "Submit"}
                   </button>
                 </Form>
               )}
